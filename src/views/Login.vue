@@ -1,86 +1,90 @@
 <template>
-    <div>
-        <nav>
-        <div class="nav-wrapper blue darken-1">
-            <a href="#" class="brand-logo center">Login</a>
-        </div>
-        </nav>
 
-        <div class="container">
-    
-            <form @submit.prevent="save" class="col s12">
-                
-                <div class="row">
-                    
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Email</label>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="password" type="password" class="validate">
-                            <label for="password">Password</label>
-                        </div>
-                    </div>
-            
-                    
-                </div>
-                
-            </form>
+<div class="conteiner">
 
+<!-- login form -->
+  <div class="row login">
+    <div class="col s4 offset-s4">
+      <div class="card">
+        
+        <div class="card-action red white-text">
+          <h3>Login Form</h3>
         </div>
 
-    
+        <div class="card-content">
+          <div class="form-field">
+            <label for="username">Username</label>
+            <input type="text" id="username" />
+          </div>
+          <br />
+
+          <div class="form-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" />
+          </div>
+          <br />
+
+          <div class="form-field center-align">
+            <button class="btn-large red">Login</button>
+          </div>
+          <br />
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
 </template>
 
 <script>
-
-import User from '../service/users'
-
+import User from "../service/users";
 
 export default {
-  name: 'Login',
- 
+  name: "Login",
 
-  data(){
+  data() {
     return {
       user: {
-        name: '',
-        email: '',
-        senha: ''
+        name: "",
+        email: "",
+        senha: "",
       },
-      cont: 0
-
-    }
+      cont: 0,
+    };
   },
 
-  methods:{
-
-    save(){
-
-      User.saveUser(this.user).then(response => {
+  methods: {
+    save() {
+      User.saveUser(this.user).then((response) => {
         alert(response);
-      })
-    
+      });
     },
 
-    contador: function(){
-      console.log(this.cont++)
+    contador: function () {
+      console.log(this.cont++);
     },
-
-   
-  }
-
-}
-
+  },
+};
 </script>
 
 <style>
 
+body{
+  background-image: url("../img/background.png") ;
+  background-size: cover;
+}
+
+.login{
+  margin-top: 10%;
+}
+
+.login .card{
+  background: rgba(0, 0, 0, .6);
+}
+
+.login label{
+  font-size: 16px;
+  color: #ccc;
+}
 
 </style>
